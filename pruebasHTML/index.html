@@ -1,0 +1,399 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Resumen.es</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            --primary: gray;
+            --secondary: #29b6f6;
+            margin: 0px;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        button {
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            text-decoration: none;
+            margin: 2px;
+            color: var(--primary);
+            background: white;
+            border: 1px solid var(--primary);
+            height: 20px;
+            font-size: 9px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: ease-in 0.2s all;
+            padding: 0 8px 0 8px;
+        }
+
+        div#main {
+            padding: 10px;
+        }
+
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input {
+            margin-bottom: 5px;
+            margin-top: 2px;
+            padding: 4px;
+            font-size: 12px;
+        }
+
+        h1 {
+            background: var(--primary);
+            color: white;
+            font-weight: 300;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin: 0px;
+            padding: 15px;
+        }
+
+        h2 {
+            margin-block-start: 0px;
+            margin-block-end: 10px;
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        div.actions {
+            margin-top: 10px;
+        }
+
+        div.libro {
+            display: inline-block;
+            width: auto;
+            padding: 10px;
+            box-shadow: 2px 2px 7px #ccc;
+            margin: 5px;
+        }
+
+        div.libro div.libro-img {
+            width: 200px;
+            height: auto;
+            min-height: 200px;
+            cursor: pointer;
+        }
+
+        div.libro div.libro-img img {
+            width: 200px;
+            height: 300px;
+        }
+
+        div.libro div.title {
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 200px;
+            white-space: nowrap;
+        }
+
+        div.field {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .portada {
+            margin-left: 30px;
+            margin-right: 30px;
+            float: left;
+        }
+
+        .card {
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 450px;
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            background-color: #fff;
+            background-clip: content-box;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.25rem;
+            
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        // MODELO DE DATOS
+
+        let libros = [
+            { titulo: "El poder del ahora", autor: "Eckhar Tolle", miniatura: "files/Elpoderdelahora.jpg" },
+            { titulo: "Inteligencia emocional 2.0", autor: "Travis Bradberry, Jean Greaves, y Patrick M. Lencioni", miniatura: "files/inteligencia.jpg" },
+            { titulo: "El monje que vendió su ferrari", autor: "Robin Sharma", miniatura: "files/monje.jpg" }
+        ];
+
+
+        // VISTAS
+
+        const indexView = (libros) => {
+            let i = 0;
+            let view = `<div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="active index" href="#">Inicio</a>
+                    <a class="library" href="#lib">Biblioteca</a>
+                    <a href="#contact">Tarifas</a>
+                    <a href="#about">FAQ</a>
+                    <a href="#about">Contacto</a>
+                    <a href="#about">Lupa</a>
+                    <a class="login" href="#login">Login</a>
+                    
+                </div>
+                <h2>Mejores libros</h2>`;
+
+            while (i < libros.length) {
+                view += `
+                
+                <div class="libro">
+                   <div class="libro-img">
+                        <img class="show" data-my-id="${i}" src="${libros[i].miniatura}" onerror="this.src='files/placeholder.png'"/>
+                   </div>
+                   <div class="title">
+                       ${libros[i].titulo || "<em>Sin título</em>"}
+                   </div>
+                   <div class="actions">
+                        <button class="show" data-my-id="${i}">Leer</button>
+                        <button class="edit" data-my-id="${i}">Favorito</button>
+                    </div>
+                </div>\n`;
+                i = i + 1;
+            };
+
+            return view;
+        }
+
+        const resumeView = (libro) => {
+            return `
+            <div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="index" href="#">Inicio</a>
+                    <a class="library" href="#lib">Biblioteca</a>
+                    <a href="#contact">Tarifas</a>
+                    <a href="#about">FAQ</a>
+                    <a href="#about">Contacto</a>
+                    <a href="#about">Lupa</a>
+                    <a class="login" href="#login">Login</a>
+                    
+            </div>
+            
+            
+             <p>
+                <div class="field">
+                Título <br>
+                <h3  type="text" id="titulo" placeholder="Título"> 
+                        ${libro.titulo}</h3>
+                </div>
+                <div class="field">
+                Autor <br>
+                <h3  type="text" id="director" placeholder="Autor"> 
+                        ${libro.autor} </h3> 
+                
+                <p>
+                    <div class="libro-img">
+                            <img class="portada" src="${libro.miniatura}" onerror="this.src='files/placeholder.png'" width="320px" height="550px"/>
+                            
+                    </div>
+                    
+                </p>
+                <p>
+                    La ETSIT-UPM apuesta por la movilidad internacional de los estudiantes. Acuerdos bilaterales entre
+					la
+					ETSIT y
+					los centros más prestigiosos de los cinco continentes. Programas de doble titulación y otros como
+					Sócrates/LLP
+					(Erasmus), Magalhaes/Smile o Athens son las opciones que los estudiantes de últimos cursos eligen
+					para
+					completar
+					su formación en el extranjero. La oferta de movilidad para el curso 2010/2011 incluirá la
+					posibilidad de
+					que las
+					estancias en las universidades de destino se realicen no sólo por un año, como hasta ahora, sino
+					también
+					por
+					semestres, con el objetivo de poder reconocer créditos optativos de la titulación.
+                
+                </p>
+                <button >Like</button>
+                <button >Comentar</button>
+                <button class="index" >Volver</button>
+                
+                
+             </p>
+             
+             `;
+
+        }
+
+        const libraryView = (libros) => {
+            let i = 0;
+            let view = `<div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="index" href="#">Inicio</a>
+                    <a class="library active" href="#lib">Biblioteca</a>
+                    <a href="#contact">Tarifas</a>
+                    <a href="#about">FAQ</a>
+                    <a href="#about">Contacto</a>
+                    <a href="#about">Lupa</a>
+                    <a class="login" href="#login">Login</a>
+                    
+                </div>
+                <h2>Temas</h2>`;
+
+            while (i < libros.length) {
+                view += `
+                
+                <div class="libro">
+                   <div class="libro-img">
+                        <img class="show" data-my-id="${i}" src="${libros[i].miniatura}" onerror="this.src='files/placeholder.png'"/>
+                   </div>
+                   <div class="title">
+                       ${libros[i].titulo || "<em>Sin título</em>"}
+                   </div>
+                   <div class="actions">
+                        <button class="show" data-my-id="${i}">Leer</button>
+                        <button class="edit" data-my-id="${i}">Favorito</button>
+                    </div>
+                </div>\n`;
+                i = i + 1;
+            };
+
+            return view;
+        }
+        
+        const loginView = () => {
+            
+            return `<div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="index" href="#">Inicio</a>
+                    <a class="library" href="#lib">Biblioteca</a>
+                    <a href="#contacto">Tarifas</a>
+                    <a href="#about">FAQ</a>
+                    <a href="#about">Contacto</a>
+                    <a href="#about">Lupa</a>
+                    <a class="active login" href="#login">Login</a>
+                    
+                </div>
+            
+            <div class="card">
+            <form action="contactResult.html" method="post">
+
+                        <div class="mb-3">
+                        <label for="nombreInput" class="form-label">Correo electrónico</label>
+                        <p>
+                            <input type="email" class="form-control" id="nombreInput" required>
+                        </p>
+                        
+                        </div>
+
+                        <div class="mb-3">
+                        <label for="nombreInput" class="form-label">Contraseña</label>
+                        
+                        <p>
+                            <input type="password" class="form-control" id="nombreInput" required>
+                        </p>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </form>
+                        </div>
+            `;
+        }
+
+        // CONTROLADORES 
+
+        const initContr = async () => {
+            indexContr();
+        }
+
+        const indexContr = async () => {
+            document.getElementById('main').innerHTML = await indexView(libros);
+        }
+
+        const showContr = (i) => {
+            // Completar: controlador que muestra la vista showView()
+            //let p = getAPI();
+            // console.log("Hola1");
+            //let libro = libros[i];
+            //console.log("Hola");
+            document.getElementById('main').innerHTML = resumeView(libros[i]);
+        }
+
+        const libraryContr = async () => {
+            document.getElementById('main').innerHTML = await libraryView(libros);
+        }
+
+        const loginContr = async () => {
+            document.getElementById('main').innerHTML = await loginView();
+        }
+
+
+
+        // ROUTER de eventos
+        const matchEvent = (ev, sel) => ev.target.matches(sel)
+        const myId = (ev) => Number(ev.target.dataset.myId)
+
+        document.addEventListener('click', ev => {
+            if (matchEvent(ev, '.index')) indexContr();
+            else if (matchEvent(ev, '.show')) showContr(myId(ev));
+            else if (matchEvent(ev, '.library')) libraryContr();
+            else if (matchEvent(ev, '.login')) loginContr()
+        })
+
+
+        // Inicialización        
+        document.addEventListener('DOMContentLoaded', initContr);
+    </script>
+</head>
+
+<body>
+
+
+
+    <div id="main">
+        Cargando...
+    </div>
+
+</body>
+
+</html>
