@@ -10,6 +10,8 @@
             --primary: gray;
             --secondary: #29b6f6;
             margin: 0px;
+            
+            
         }
 
         * {
@@ -22,19 +24,18 @@
             text-decoration: none;
             margin: 2px;
             color: var(--primary);
-            background: white;
+            background: #4CAF50;
+            color:white;
             border: 1px solid var(--primary);
             height: 20px;
-            font-size: 9px;
+            font-size: 12px;
             text-transform: uppercase;
             cursor: pointer;
             transition: ease-in 0.2s all;
             padding: 0 8px 0 8px;
         }
 
-        div#main {
-            padding: 10px;
-        }
+        
 
         .topnav {
             background-color: #333;
@@ -46,10 +47,13 @@
         .topnav a {
             float: left;
             color: #f2f2f2;
-            text-align: center;
             padding: 14px 16px;
             text-decoration: none;
             font-size: 17px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
 
@@ -63,6 +67,35 @@
             background-color: #4CAF50;
             color: white;
         }
+
+
+        .topnav a.login {
+            float: right;
+        }
+
+        .topnav form.lupa {
+            float: right;
+            margin-top: 1rem;
+        }
+
+        .topnav form.lupa input {
+            height: 1px;
+        }
+
+        .topnav form.lupa button:hover,
+        .topnav form.lupa button:focus {
+            background: #292929;
+            background: -webkit-linear-gradient(#393939, #292929);
+            background: -moz-linear-gradient(#393939, #292929);
+            background: -o-linear-gradient(#393939, #292929);
+            background: -ms-linear-gradient(#393939, #292929);
+            background: linear-gradient(#393939, #292929);
+            color: #4CAF50;
+            outline: none;
+        }
+
+
+
 
         input {
             margin-bottom: 5px;
@@ -97,12 +130,28 @@
             margin-top: 10px;
         }
 
+       
+
         div.libro {
             display: inline-block;
             width: auto;
             padding: 10px;
             box-shadow: 2px 2px 7px #ccc;
             margin: 5px;
+            border-radius: 3%;
+            background-color:#333;
+            color: white;
+            
+        }
+
+        div.libro#index{
+            margin-left: 192px;
+        }
+
+        .presentacion{
+            font-size: 40px;
+            text-align: center;
+            font-weight: bold;
         }
 
         div.libro div.libro-img {
@@ -110,11 +159,13 @@
             height: auto;
             min-height: 200px;
             cursor: pointer;
+            
         }
 
         div.libro div.libro-img img {
             width: 200px;
             height: 300px;
+            border-radius: 3%;
         }
 
         div.libro div.title {
@@ -144,12 +195,69 @@
             display: flex;
             flex-direction: column;
             max-width: 500px;
-            background-color: #fff;
+            background-color: #4CAF50;
             background-clip: content-box;
             border: 1px solid rgba(0, 0, 0, 0.125);
             border-radius: 0.25rem;
-            
+
         }
+
+        .form {
+            width: 460px;
+            height: auto;
+            border-radius: 10px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            padding-left: 30px;
+        }
+
+        .form-control {
+                background-color: white;
+                width: 408px;
+                height: 40px;
+                border-radius: 5px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: #292929;
+                margin-top: 10px;
+                padding-left: 10px;
+                margin-bottom: 20px;
+        }
+
+        textarea {
+            background-color: #fbfbfb;
+            width: 405px;
+            height: 150px;
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #292929;
+            margin-top: 10px;
+            padding-left: 10px;
+            margin-bottom: 20px;
+            padding-top: 15px;
+        }
+
+        .btn-form{
+            background-color: white;
+            color:black;
+            height: 20px;
+            width: 100px;
+            margin-left: 155px;
+        }
+
+        .btn-login{
+            background-color: white;
+            color:black;
+            height: 20px;
+            width: 150px;
+        }
+
+
+
+
+
+        
     </style>
 
     <script type="text/javascript">
@@ -159,6 +267,10 @@
         let libros = [
             { titulo: "El poder del ahora", autor: "Eckhar Tolle", miniatura: "files/Elpoderdelahora.jpg" },
             { titulo: "Inteligencia emocional 2.0", autor: "Travis Bradberry, Jean Greaves, y Patrick M. Lencioni", miniatura: "files/inteligencia.jpg" },
+            { titulo: "El monje que vendió su ferrari", autor: "Robin Sharma", miniatura: "files/monje.jpg" },
+            { titulo: "El monje que vendió su ferrari", autor: "Robin Sharma", miniatura: "files/monje.jpg" },
+            { titulo: "El monje que vendió su ferrari", autor: "Robin Sharma", miniatura: "files/monje.jpg" },
+            { titulo: "El monje que vendió su ferrari", autor: "Robin Sharma", miniatura: "files/monje.jpg" },
             { titulo: "El monje que vendió su ferrari", autor: "Robin Sharma", miniatura: "files/monje.jpg" }
         ];
 
@@ -169,21 +281,25 @@
             let i = 0;
             let view = `<div class="topnav">
                     <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
-                    <a class="active index" href="#">Inicio</a>
+                    <a class="index active" href="#">Inicio</a>
                     <a class="library" href="#lib">Biblioteca</a>
-                    <a href="#contact">Tarifas</a>
-                    <a href="#about">FAQ</a>
-                    <a href="#about">Contacto</a>
-                    <a href="#about">Lupa</a>
-                    <a class="login" href="#login">Login</a>
+                    <a class="tarifa" href="#tar">Tarifas</a>
+                    <a class="faq" href="#faq">FAQ</a>
+                    <a class="contacto" href="#cont">Contacto</a>
+                    <a class="login" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
+                    
                     
                 </div>
-                <h2>Mejores libros</h2>`;
+                <p class="presentacion">Mejores libros</p>`;
 
-            while (i < libros.length) {
+            while (i < 3) {
                 view += `
                 
-                <div class="libro">
+                <div class="libro" id="index">
                    <div class="libro-img">
                         <img class="show" data-my-id="${i}" src="${libros[i].miniatura}" onerror="this.src='files/placeholder.png'"/>
                    </div>
@@ -207,13 +323,16 @@
                     <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
                     <a class="index" href="#">Inicio</a>
                     <a class="library" href="#lib">Biblioteca</a>
-                    <a href="#contact">Tarifas</a>
-                    <a href="#about">FAQ</a>
-                    <a href="#about">Contacto</a>
-                    <a href="#about">Lupa</a>
-                    <a class="login" href="#login">Login</a>
+                    <a class="tarifa" href="#tar">Tarifas</a>
+                    <a class="faq" href="#faq">FAQ</a>
+                    <a class="contacto" href="#cont">Contacto</a>
+                    <a class="login" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
                     
-            </div>
+                </div>
             
             
              <p>
@@ -269,14 +388,18 @@
                     <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
                     <a class="index" href="#">Inicio</a>
                     <a class="library active" href="#lib">Biblioteca</a>
-                    <a href="#contact">Tarifas</a>
-                    <a href="#about">FAQ</a>
-                    <a href="#about">Contacto</a>
-                    <a href="#about">Lupa</a>
-                    <a class="login" href="#login">Login</a>
+                    <a class="tarifa" href="#tar">Tarifas</a>
+                    <a class="faq" href="#faq">FAQ</a>
+                    <a class="contacto" href="#cont">Contacto</a>
+                    <a class="login" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
                     
                 </div>
-                <h2>Temas</h2>`;
+                <p class="presentacion">Temas</p>
+                <p class="presentacion">...|...|...|...|...|...|...|...`;
 
             while (i < libros.length) {
                 view += `
@@ -298,23 +421,26 @@
 
             return view;
         }
-        
+
         const loginView = () => {
-            
+
             return `<div class="topnav">
                     <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
                     <a class="index" href="#">Inicio</a>
                     <a class="library" href="#lib">Biblioteca</a>
-                    <a href="#contacto">Tarifas</a>
-                    <a href="#about">FAQ</a>
-                    <a href="#about">Contacto</a>
-                    <a href="#about">Lupa</a>
-                    <a class="active login" href="#login">Login</a>
+                    <a class="tarifa" href="#tar">Tarifas</a>
+                    <a class="faq" href="#faq">FAQ</a>
+                    <a class="contacto" href="#cont">Contacto</a>
+                    <a class="login active" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
                     
                 </div>
             
             <div class="card">
-            <form action="contactResult.html" method="post">
+            <form class="form" action="contactResult.html" method="post">
 
                         <div class="mb-3">
                         <label for="nombreInput" class="form-label">Correo electrónico</label>
@@ -333,12 +459,132 @@
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        <button type="submit" class="btn-login">Iniciar sesión</button>
+                        <button type="submit" class="btn-login">Registrarse</button>
                         </form>
                         </div>
             `;
         }
+
+        const tarifasView = () => {
+            return ` <div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="index" href="#">Inicio</a>
+                    <a class="library" href="#lib">Biblioteca</a>
+                    <a class="tarifa active" href="#tar">Tarifas</a>
+                    <a class="faq" href="#faq">FAQ</a>
+                    <a class="contacto" href="#cont">Contacto</a>
+                    <a class="login" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
+                    
+                </div>
+
+                <p class="presentacion">Tarifas</p>
+                <table class="default">
+
+                <tr>
+
+                    <td>Tipo de suscripción</td>
+
+                    <td>Duración</td>
+
+                    <td>Precio</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Anual</td>
+
+                    <td>365 días</td>
+
+                    <td>200€</td>
+
+                </tr>
+
+                </table>
+            `
+        }
+
+        const faqView = () => {
+            return ` <div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="index" href="#">Inicio</a>
+                    <a class="library" href="#lib">Biblioteca</a>
+                    <a class="tarifa" href="#tar">Tarifas</a>
+                    <a class="faq active" href="#faq">FAQ</a>
+                    <a class="contacto" href="#cont">Contacto</a>
+                    <a class="login" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
+                    
+                </div>
+
+                
+                <p class="presentacion">Preguntas Frecuentes</p>
+                <ul> 
+                    <li> ¿Es necesario suscribirse para tener acceso a todos los resúmenes? </li>
+                    <li> pregunta 2</li>
+                    <li> pregunta 3 </li>
+                </ul>
+            `
+        }
+
+        const contactoView = () => {
+            return ` <div class="topnav">
+                    <a><img src="files/LogoResumenes.PNG" width="80px" height="50px"></img></a>
+                    <a class="index" href="#">Inicio</a>
+                    <a class="library" href="#lib">Biblioteca</a>
+                    <a class="tarifa" href="#tar">Tarifas</a>
+                    <a class="faq" href="#faq">FAQ</a>
+                    <a class="contacto active" href="#cont">Contacto</a>
+                    <a class="login" href="#log">Login</a>
+                    <form class="lupa" action="" method="">		    
+                    <input type="search" placeholder="Search...">		    	
+                    <button>Search</button>
+                    </form>
+                    
+                </div>
+
+                
+                <div class="card">
+                    <h3>Formulario de contacto</h3>
+                 <form class="form" action="contactResult.html" method="post">
+
+                        <label for="nombreInput" class="form-label">Nombre</label>
+                        <p>
+                            <input type="text" class="form-control" id="nombreInput" required>
+                        </p>
+
+                        <label for="nombreInput" class="form-label">Apellidos</label>
+                        <p>
+                            <input type="text" class="form-control" id="apellidosInput" required>
+                        </p>
+                        
+
+                        <label for="nombreInput" class="form-label">Correo electrónico</label>
+                        <p>
+                            <input type="email" class="form-control" id="emailInput" required>
+                        </p>
+
+                        <label for="nombreInput" class="form-label">Comentario</label>
+                        <p>
+                            <textarea type="text" id="comentario" rows="10" cols="50"></textarea>
+                        </p>
+
+
+                        <button type="submit" class="btn-form">Enviar</button>
+                </form>
+                </div>
+            `
+        }
+
+
 
         // CONTROLADORES 
 
@@ -367,6 +613,18 @@
             document.getElementById('main').innerHTML = await loginView();
         }
 
+        const tarifasContr = async () => {
+            document.getElementById('main').innerHTML = await tarifasView();
+        }
+
+        const faqContr = async () => {
+            document.getElementById('main').innerHTML = await faqView();
+        }
+
+        const contactoContr = async () => {
+            document.getElementById('main').innerHTML = await contactoView();
+        }
+
 
 
         // ROUTER de eventos
@@ -377,7 +635,10 @@
             if (matchEvent(ev, '.index')) indexContr();
             else if (matchEvent(ev, '.show')) showContr(myId(ev));
             else if (matchEvent(ev, '.library')) libraryContr();
-            else if (matchEvent(ev, '.login')) loginContr()
+            else if (matchEvent(ev, '.login')) loginContr();
+            else if (matchEvent(ev, '.tarifa')) tarifasContr();
+            else if (matchEvent(ev, '.faq')) faqContr();
+            else if (matchEvent(ev, '.contacto')) contactoContr()
         })
 
 
@@ -391,7 +652,7 @@
 
 
     <div id="main">
-        Cargando...
+        cargando...
     </div>
 
 </body>
