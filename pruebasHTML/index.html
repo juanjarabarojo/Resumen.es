@@ -149,7 +149,7 @@
         }
 
         .presentacion{
-            font-size: 40px;
+            font-size: 60px;
             text-align: center;
             font-weight: bold;
         }
@@ -252,6 +252,33 @@
             height: 20px;
             width: 150px;
         }
+        
+
+
+		table {   
+			position: absolute;
+			top: 40%;
+			left: 30%;
+			height: 70px; 
+			margin-top: -35px; 
+			margin-left: -300px; 
+            font-size: 24px;
+            margin: 0 auto;     
+            width: 600px; 
+            text-align: center; 
+            vertical-align: middle;   
+            border-collapse: collapse; 
+            }
+
+           td {   
+            padding: 10px;     
+            background: #c4e3ba;     
+            border-bottom: 1px solid #fff;
+            color: #000000;    
+            border-top: 1px solid transparent; 
+            }
+
+            tr:hover td { background: #889487; color: #000000; }
 
 
 
@@ -441,7 +468,6 @@
             
             <div class="card">
             <form class="form" action="contactResult.html" method="post">
-
                         <div class="mb-3">
                         <label for="nombreInput" class="form-label">Correo electrónico</label>
                         <p>
@@ -449,7 +475,6 @@
                         </p>
                         
                         </div>
-
                         <div class="mb-3">
                         <label for="nombreInput" class="form-label">Contraseña</label>
                         
@@ -457,8 +482,6 @@
                             <input type="password" class="form-control" id="nombreInput" required>
                         </p>
                         </div>
-
-
                         <button type="submit" class="btn-login">Iniciar sesión</button>
                         <button type="submit" class="btn-login">Registrarse</button>
                         </form>
@@ -481,31 +504,22 @@
                     </form>
                     
                 </div>
-
                 <p class="presentacion">Tarifas</p>
                 <table class="default">
-
                 <tr>
-
                     <td>Tipo de suscripción</td>
-
                     <td>Duración</td>
-
                     <td>Precio</td>
-
                 </tr>
-
                 <tr>
-
                     <td>Anual</td>
-
                     <td>365 días</td>
-
                     <td>200€</td>
-
                 </tr>
-
+                
                 </table>
+                
+ 
             `
         }
 
@@ -524,14 +538,24 @@
                     </form>
                     
                 </div>
-
                 
                 <p class="presentacion">Preguntas Frecuentes</p>
-                <ul> 
-                    <li> ¿Es necesario suscribirse para tener acceso a todos los resúmenes? </li>
-                    <li> pregunta 2</li>
-                    <li> pregunta 3 </li>
-                </ul>
+                <table class="default">
+                <tr>
+                    <td>¿Es necesario suscribirse para tener acceso a todos los resúmenes?</td>
+                    <td>Sí, es necesario</td>
+                </tr>
+                <tr>
+                    <td>Pregunta 2</td>
+                    <td>Respuesta 2</td>
+                </tr>
+                <tr>
+                <td>Pregunta 3</td>
+                <td>Respuesta 3</td>
+            </tr>
+            
+                </table>
+                
             `
         }
 
@@ -550,34 +574,27 @@
                     </form>
                     
                 </div>
-
                 
                 <div class="card">
                     <h3>Formulario de contacto</h3>
                  <form class="form" action="contactResult.html" method="post">
-
                         <label for="nombreInput" class="form-label">Nombre</label>
                         <p>
                             <input type="text" class="form-control" id="nombreInput" required>
                         </p>
-
                         <label for="nombreInput" class="form-label">Apellidos</label>
                         <p>
                             <input type="text" class="form-control" id="apellidosInput" required>
                         </p>
                         
-
                         <label for="nombreInput" class="form-label">Correo electrónico</label>
                         <p>
                             <input type="email" class="form-control" id="emailInput" required>
                         </p>
-
                         <label for="nombreInput" class="form-label">Comentario</label>
                         <p>
                             <textarea type="text" id="comentario" rows="10" cols="50"></textarea>
                         </p>
-
-
                         <button type="submit" class="btn-form">Enviar</button>
                 </form>
                 </div>
