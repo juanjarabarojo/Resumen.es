@@ -12,20 +12,19 @@ public class Resumen implements Serializable {
 	@Id
 	private int id;
 	private String title; // No tiene por que ser único, ¿Puede haber varios resumenes del mismo libro?
-	private String author; // Nombre y apellidos mejor, no creo que se busque solo por nombre o apellidos el autor
-	@Lob
-	private byte[] document; //El documento en si, seguramente un pdf
-	@Lob 
-	private byte[] image;
-	//private String writter; //El autor del libro tambien lo podemos poner (poner get y set si se hace
-	//categoria
-	//Resto de atributos estan relacionados con autenticación se añadiran posteriormente
+	private String author;// Nombre y apellidos mejor, no creo que se busque solo por nombre o apellidos el autor
+	private String image;
+	private String synopsis;
+	private String document;
+	private String audio;
 	
-	public byte[] getImage() {
+	
+	
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -49,12 +48,7 @@ public class Resumen implements Serializable {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public byte[] getDocument() {
-		return document;
-	}
-	public void setDocument(byte[] document) {
-		this.document = document;
-	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -79,6 +73,30 @@ public class Resumen implements Serializable {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public String getSynopsis() {
+		return synopsis;
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+
+	public String getDocument() {
+		return document;
+	}
+
+	public void setDocument(String document) {
+		this.document = document;
+	}
+
+	public String getAudio() {
+		return audio;
+	}
+
+	public void setAudio(String audio) {
+		this.audio = audio;
 	}
 	
 
