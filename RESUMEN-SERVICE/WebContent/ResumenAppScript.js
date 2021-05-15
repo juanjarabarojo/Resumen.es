@@ -80,13 +80,10 @@ $(document).ready(function(){
 		                var Imagen = response[i].image;
                 
 		                var input = $(".ilupa").val();
-		                
-		                if(input == Titulo){
+		                if(input.trim().toLowerCase().split(' ').join('') == Titulo.trim().toLowerCase().split(' ').join('')){
 		                
 						location.replace("libros/libro"+i+".html");
 						break;
-						} else{
-							alert('ALGO NO FUNCIONAAAAA')
 						}
 					}
 				}); 
