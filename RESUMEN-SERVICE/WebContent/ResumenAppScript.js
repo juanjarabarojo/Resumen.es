@@ -64,17 +64,41 @@ $(document).ready(function(){
 
                 $("#cuerpo1").append(library); 
                 
-            }
+            } 
             
             
-           
-        }
-        
-        
-        
+            
+            
+            
+            $(".search").click(function(){
+            
+            		for(var i=0; i<len; i++){
+		                var Id = response[i].id;
+		                var Titulo = response[i].title;
+		                var Autor = response[i].author;
+		                var document = response[i].document;
+		                var Imagen = response[i].image;
+                
+		                var input = $(".ilupa").val();
+		                
+		                if(input == Titulo){
+		                
+						location.replace("libros/libro"+i+".html");
+						break;
+						} else{
+							alert('ALGO NO FUNCIONAAAAA')
+						}
+					}
+				}); 
+				
 
+			
+			
+        }
 
     });
+    
+
     
 
 
