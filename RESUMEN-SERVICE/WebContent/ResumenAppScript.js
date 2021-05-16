@@ -71,6 +71,8 @@ $(document).ready(function(){
             
             
             $(".search").click(function(){
+            	
+            		var cont=0;
             
             		for(var i=0; i<len; i++){
 		                var Id = response[i].id;
@@ -84,6 +86,12 @@ $(document).ready(function(){
 		                
 						location.replace("libros/libro"+i+".html");
 						break;
+						} else{
+							cont = cont + 1;
+							if(cont == 5){
+								alert('El libro no está disponible');				
+							}
+						
 						}
 					}
 				}); 
