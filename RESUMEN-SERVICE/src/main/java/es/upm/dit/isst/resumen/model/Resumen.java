@@ -11,8 +11,8 @@ public class Resumen implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private int id;
-	private String title; // No tiene por que ser único, ¿Puede haber varios resumenes del mismo libro?
-	private String author;// Nombre y apellidos mejor, no creo que se busque solo por nombre o apellidos el autor
+	private String title; 
+	private String author;
 	private String image;
 	private String synopsis;
 	private String document;
